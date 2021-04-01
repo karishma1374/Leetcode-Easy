@@ -1,0 +1,23 @@
+//CODE:
+
+class Solution {
+public:
+    unordered_map<char,int> mp;//to store count of unique characters 
+    int count=0;
+    int numJewelsInStones(string J, string S) 
+    {
+        for(char c:S)
+        {
+            mp[c]++;//increment
+        }
+        
+        for(char c:J)
+        {
+            if(mp.count(c))//if present already
+            {
+                count+=mp[c];//add their count to total count
+            }
+        }
+        return count;
+    }
+};
