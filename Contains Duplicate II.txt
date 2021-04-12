@@ -1,0 +1,54 @@
+//link   >>https://www.geeksforgeeks.org/check-given-array-contains-duplicate-elements-within-k-distance/
+
+class Solution 
+{
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k)
+    {
+       unordered_set<int>ans; 
+  
+    // Traverse the input array 
+    for (int i = 0; i < nums.size(); i++) 
+    { 
+        // If already present in hash, then we found 
+        // a duplicate within k distance 
+        if (ans.find(nums[i]) != ans.end()) 
+            return true; 
+  
+        // Add this item to hashset 
+        ans.insert(nums[i]); 
+  
+        // Remove the k+1 distant item 
+        if (i >= k) 
+            ans.erase(nums[i-k]); 
+    } 
+    return false; 
+    }
+};
+
+
+
+
+
+/*TIME LIMIT EXCEEDED but see the naive approach
+
+class Solution 
+{
+public:
+    bool containsNearbyDuplicate(vector<int>& nums, int k)
+    {
+        int n= nums.size();
+        for(int i=0;i<n;i++)
+        {
+            for(int j=0;j<n;j++)
+            {
+                if(nums[i]==nums[j] && abs(i-j)<=k && i!=j)
+                {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+}; 
+*/

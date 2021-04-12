@@ -1,0 +1,38 @@
+class Solution {
+public:
+    int mySqrt(int x)
+    {   if(x<2)return x;
+        int start=1;
+        int end=x;
+        while(start<end)
+        {
+            long long int mid=start+(end-start)/2;
+            if(mid*mid==x)
+            {
+                return mid;
+            }
+            if(mid*mid>x)end=mid;
+            else start=mid+1;
+        }
+        return  start-1; 
+    }
+};
+
+
+/*class Solution {
+public:
+int mySqrt(int x) 
+{
+if(x<2)return x;
+int left=1, right =x;
+while(left< right)
+{
+long long int mid=left+(right-left)/2;
+
+        if(mid * mid==x)return mid;
+        if(mid * mid>x)right =mid;
+        else left=mid+1;
+    }
+    return left-1;
+}
+};*/
